@@ -11,40 +11,108 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-      backgroundColor: Colors.teal,
-        body:SafeArea(
+        backgroundColor: Colors.teal,
+        body: SafeArea(
           child: Column(
-            // mainAxisSize: MainAxisSize.min,
-            // verticalDirection: VerticalDirection.down,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: 100,
-                color: Colors.red,
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage(
+                  'assets/images/my_image.jpg',
+                ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.yellow,
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.yellow.withValues(alpha: 0.3),
-                  ),
-                ],
+              Text(
+                "Mohamed Samir",
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.white,
+                  fontWeight:
+                      FontWeight.bold,
+                  fontFamily:
+                      "Pacifico",
+                ),
+              ),
+              Text(
+                "FRONTEND DEVELOPER",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors
+                      .teal
+                      .shade100,
+                  fontFamily:
+                      "SourceSans",
+                  fontWeight:
+                      FontWeight.bold,
+                  letterSpacing: 2,
+                ),
               ),
               Container(
-                width: 100,
-                color: Colors.blue,
+                color: Colors.white,
+                margin:
+                    EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 25,
+                    ),
+                padding: EdgeInsets.all(
+                  10,
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.phone,
+                      color:
+                          Colors.teal,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "+01286095905",
+                      style: TextStyle(
+                        color:
+                            Colors.teal,
+                        fontSize: 20,
+                        fontWeight:
+                            FontWeight
+                                .bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                margin:
+                    EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 25,
+                    ),
+                padding: EdgeInsets.all(
+                  10,
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.email,
+                      color:
+                          Colors.teal,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "fekrabokra@gmail.com",
+                      style: TextStyle(
+                        color:
+                            Colors.teal,
+                        fontSize: 20,
+                        fontWeight:
+                            FontWeight
+                                .bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        )
+        ),
       ),
     );
   }
