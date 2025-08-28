@@ -1,114 +1,70 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
-  runApp(const MyApp());
+  return runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.red,
+        appBar: AppBar(
+          title: Text('Dicee'),
+          backgroundColor: Colors.red,
+          centerTitle: true,
+        ),
+        body: DicePage(),
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DicePage extends StatefulWidget {
+  const DicePage({super.key});
+
+  @override
+  State<DicePage> createState() =>
+      _DicePageState();
+}
+
+class _DicePageState
+    extends State<DicePage> {
+  int leftDiceNumber = 1;
+  int rightDiceNumber = 1;
+
+  void changeDiceFace() {
+    setState(() {
+      leftDiceNumber =
+          Random().nextInt(6) + 1;
+      rightDiceNumber =
+          Random().nextInt(6) + 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment
-                    .center,
-            children: [
-              CircleAvatar(
-                radius: 50.0,
-                backgroundImage: AssetImage(
-                  'assets/images/my_image.jpg',
-                ),
+    return Center(
+      child: Row(
+        children: [
+          Expanded(
+            child: TextButton(
+              onPressed: () {
+                changeDiceFace();
+              },
+              child: Image.asset(
+                "assets/images/dice$leftDiceNumber.png",
               ),
-              Text(
-                "Mohamed Samir",
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.white,
-                  fontWeight:
-                      FontWeight.bold,
-                  fontFamily:
-                      "Pacifico",
-                ),
-              ),
-              Text(
-                "FRONTEND DEVELOPER",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors
-                      .teal
-                      .shade100,
-                  fontFamily:
-                      "SourceSans",
-                  fontWeight:
-                      FontWeight.bold,
-                  letterSpacing: 2,
-                ),
-              ),
-              SizedBox(
-                height: 20,
-                width: 150,
-                child: Divider(
-                  color: Colors
-                      .teal
-                      .shade100,
-                ),
-              ),
-              Card(
-                margin:
-                    EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 25,
-                    ),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.phone,
-                    color: Colors.teal,
-                  ),
-                  title: Text(
-                    "+201286095905",
-                    style: TextStyle(
-                      color:
-                          Colors.teal,
-                      fontSize: 20,
-                      fontWeight:
-                          FontWeight
-                              .bold,
-                    ),
-                  ),
-                ),
-              ),
-              Card(
-                margin:
-                    EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 25,
-                    ),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.email,
-                    color: Colors.teal,
-                  ),
-                  title: Text(
-                    "fekrabokra@gmail.com",
-                    style: TextStyle(
-                      color:
-                          Colors.teal,
-                      fontSize: 20,
-                      fontWeight:
-                          FontWeight
-                              .bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+          Expanded(
+            child: TextButton(
+              onPressed: () {
+                changeDiceFace();
+              },
+              child: Image.asset(
+                "assets/images/dice$rightDiceNumber.png",
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
